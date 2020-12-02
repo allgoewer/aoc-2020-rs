@@ -1,7 +1,7 @@
 mod day1;
 mod day2;
 
-struct Input(&'static str);
+struct Input<'s>(&'s str);
 
 trait Day {
     fn part1(&self, _input: &Input) -> String {
