@@ -7,7 +7,7 @@ struct Parsed<'s> {
     password: &'s str,
 }
 
-fn parse(line: &str) -> Option<Parsed> {
+fn parse(line: &str) -> Option<Parsed<'_>> {
     let line: Vec<_> = line.splitn(3, ' ').collect();
 
     match &line[..] {
@@ -26,7 +26,7 @@ fn parse(line: &str) -> Option<Parsed> {
     }
 }
 
-fn validate1(parsed: &Parsed) -> bool {
+fn validate1(parsed: &Parsed<'_>) -> bool {
     let count = parsed
         .password
         .chars()
@@ -36,7 +36,7 @@ fn validate1(parsed: &Parsed) -> bool {
     parsed.policy.0 <= count && count <= parsed.policy.1
 }
 
-fn validate2(parsed: &Parsed) -> bool {
+fn validate2(parsed: &Parsed<'_>) -> bool {
     let c = parsed.character;
     if let (Some(a), Some(b)) = (
         parsed.password.chars().nth(parsed.policy.0 - 1),
@@ -50,7 +50,7 @@ fn validate2(parsed: &Parsed) -> bool {
 
 fn validate_with<P>(input: &Input, predicate: P) -> String
 where
-    P: FnMut(&Parsed) -> bool,
+    P: FnMut(&Parsed<'_>) -> bool,
 {
     input
         .0
