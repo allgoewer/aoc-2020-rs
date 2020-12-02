@@ -1,4 +1,6 @@
 language: rust
+script:
+  - cargo run
 rust:
   - stable
   - beta
@@ -7,3 +9,4 @@ jobs:
   allow_failures:
     - rust: nightly
   fast_finish: true
+cache: cargo
