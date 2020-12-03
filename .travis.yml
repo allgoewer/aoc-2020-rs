@@ -1,6 +1,7 @@
 language: rust
 script:
   - cargo run
+  - cargo run --release
 rust:
   - stable
   - beta
