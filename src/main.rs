@@ -13,6 +13,17 @@ trait Day {
     }
 }
 
+fn timed<F>(day: usize, part: usize, func: F)
+where
+    F: Fn() -> String
+{
+    let start = std::time::Instant::now();
+    let result = func();
+    let elapsed = start.elapsed();
+
+    println!("day{:0>2}-part{} {:>9} us {:>12}", day, part, elapsed.as_micros(), result);
+}
+
 fn main() {
     let days: Vec<(Box<dyn Day>, _)> = vec![
         (Box::new(day1::Day), Input(include_str!("inputs/1"))),
@@ -21,8 +32,9 @@ fn main() {
 
     for (mut i, (day, input)) in days.iter().enumerate() {
         i += 1;
-        println!("day{:0>2}-part1\t{}", i, day.part1(&input));
-        println!("day{:0>2}-part2\t{}", i, day.part2(&input));
+
+        timed(i, 1, || day.part1(&input));
+        timed(i, 2, || day.part2(&input));
         println!();
     }
 }
