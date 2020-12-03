@@ -1,6 +1,7 @@
 mod day1;
 mod day2;
 
+#[derive(Clone, Debug)]
 struct Input<'s>(&'s str);
 
 trait Day {
