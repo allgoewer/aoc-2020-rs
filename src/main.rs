@@ -1,5 +1,6 @@
 mod day1;
 mod day2;
+mod day3;
 
 #[derive(Clone, Debug)]
 struct Input<'s>(&'s str);
@@ -28,6 +29,7 @@ fn main() {
     let days: Vec<(Box<dyn Day>, _)> = vec![
         (Box::new(day1::Day), Input(include_str!("inputs/1"))),
         (Box::new(day2::Day), Input(include_str!("inputs/2"))),
+        (Box::new(day3::Day), Input(include_str!("inputs/3"))),
     ];
 
     for (mut i, (day, input)) in days.iter().enumerate() {
