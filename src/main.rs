@@ -1,6 +1,7 @@
 mod day1;
 mod day2;
 mod day3;
+mod day4;
 
 #[derive(Clone, Debug)]
 struct Input<'s>(&'s str);
@@ -16,13 +17,19 @@ trait Day {
 
 fn timed<F>(day: usize, part: usize, func: F)
 where
-    F: Fn() -> String
+    F: Fn() -> String,
 {
     let start = std::time::Instant::now();
     let result = func();
     let elapsed = start.elapsed();
 
-    println!("day{:0>2}-part{} {:>9} us {:>12}", day, part, elapsed.as_micros(), result);
+    println!(
+        "day{:0>2}-part{} {:>9} us {:>12}",
+        day,
+        part,
+        elapsed.as_micros(),
+        result
+    );
 }
 
 fn main() {
@@ -30,6 +37,7 @@ fn main() {
         (Box::new(day1::Day), Input(include_str!("inputs/1"))),
         (Box::new(day2::Day), Input(include_str!("inputs/2"))),
         (Box::new(day3::Day), Input(include_str!("inputs/3"))),
+        (Box::new(day4::Day), Input(include_str!("inputs/4"))),
     ];
 
     for (mut i, (day, input)) in days.iter().enumerate() {
