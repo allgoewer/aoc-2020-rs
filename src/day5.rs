@@ -68,7 +68,7 @@ impl DayTrait for Day {
             .map(|s| s.id)
             .collect();
 
-        seats.sort();
+        seats.sort_unstable();
 
         for seats in seats.windows(2) {
             let a = seats[0];
