@@ -89,21 +89,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn example0() {
+    fn samples() {
         let s = "BFFFBBFRRR";
         let seat: Seat = s.parse().unwrap();
         assert_eq!(seat, Seat { row: 70, col: 7, id: 567 });
-    }
 
-    #[test]
-    fn example1() {
         let s = "FFFBBBFRRR";
         let seat: Seat = s.parse().unwrap();
         assert_eq!(seat, Seat { row: 14, col: 7, id: 119 });
-    }
 
-    #[test]
-    fn example2() {
         let s = "BBFFBBFRLL";
         let seat: Seat = s.parse().unwrap();
         assert_eq!(seat, Seat { row: 102, col: 4, id: 820 });

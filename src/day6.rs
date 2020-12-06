@@ -50,52 +50,20 @@ mod tests {
     use super::*;
 
     #[test]
-    fn anyone_0() {
+    fn samples_part1() {
         assert_eq!(count_anyone("abc"), 3);
-    }
-
-    #[test]
-    fn anyone_1() {
         assert_eq!(count_anyone("a\nb\nc"), 3);
-    }
-
-    #[test]
-    fn anyone_2() {
         assert_eq!(count_anyone("ab\nac"), 3);
-    }
-
-    #[test]
-    fn anyone_3() {
         assert_eq!(count_anyone("a\na\na\na"), 1);
-    }
-
-    #[test]
-    fn anyone_4() {
         assert_eq!(count_anyone("b"), 1);
     }
 
     #[test]
-    fn everyone_0() {
+    fn samples_part2() {
         assert_eq!(count_everyone("abc"), 3);
-    }
-
-    #[test]
-    fn everyone_1() {
         assert_eq!(count_everyone("a\nb\nc"), 0);
-    }
-
-    #[test]
-    fn everyone_2() {
         assert_eq!(count_everyone("ab\nac"), 1);
-    }
-
-    #[test]
-    fn everyone_3() {
         assert_eq!(count_everyone("a\na\na\na"), 1);
-    }
-
-    #[test]
-    fn everyone_4() {
         assert_eq!(count_everyone("b"), 1);
     }
 }
