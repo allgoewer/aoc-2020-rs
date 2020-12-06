@@ -2,31 +2,31 @@ use super::{Day as DayTrait, Input};
 
 pub struct Day;
 
-fn count_anyone(s: &str) -> u32 {
-    let mut counter: u32 = 0;
+fn count_anyone(s: &str) -> usize {
+    let mut counter: usize = 0;
 
-    for c in s.chars() {
-        if c >= 'a' && c <= 'z' {
-            let pos = c as u32 - 'a' as u32;
+    for c in s.bytes() {
+        if c >= b'a' && c <= b'z' {
+            let pos = c - b'a';
             counter |= 1<<pos;
         }
     }
 
-    counter.count_ones()
+    counter.count_ones() as usize
 }
 
-fn count_everyone(s: &str) -> u32 {
-    let mut counter = [0u32; 26];
+fn count_everyone(s: &str) -> usize {
+    let mut counter = [0usize; 26];
 
     for line in s.lines() {
-        for c in line.chars() {
-            counter[c as usize - 'a' as usize] += 1;
+        for c in line.bytes() {
+            counter[(c - b'a') as usize] += 1;
         }
     }
 
-    let n_lines = s.lines().count() as u32;
+    let n_lines = s.lines().count();
 
-    counter.iter().filter(|count| **count == n_lines).count() as u32
+    counter.iter().filter(|count| **count == n_lines).count()
 }
 
 fn groups<'a>(input: &Input<'a>) -> impl Iterator<Item = &'a str> {
@@ -35,12 +35,12 @@ fn groups<'a>(input: &Input<'a>) -> impl Iterator<Item = &'a str> {
 
 impl DayTrait for Day {
     fn part1(&self, input: &Input) -> String {
-        let anyones: u32 = groups(input).map(count_anyone).sum();
+        let anyones: usize = groups(input).map(count_anyone).sum();
         anyones.to_string()
     }
 
     fn part2(&self, input: &Input) -> String {
-        let everyones: u32 = groups(input).map(count_everyone).sum();
+        let everyones: usize = groups(input).map(count_everyone).sum();
         everyones.to_string()
     }
 }
