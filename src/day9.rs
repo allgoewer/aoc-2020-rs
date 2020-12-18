@@ -1,6 +1,6 @@
 use super::{Day as DayTrait, Input};
-use std::ops::{Add, AddAssign};
 use itertools::Itertools;
+use std::ops::{Add, AddAssign};
 
 fn first_invalid<T>(values: &[T], window_size: usize) -> Option<T>
 where
@@ -58,7 +58,6 @@ where
     }
 }
 
-
 pub struct Day;
 
 impl DayTrait for Day {
@@ -105,6 +104,5 @@ mod tests {
         let range = find_range(SAMPLE1, invalid).unwrap();
 
         assert_eq!(min_max_sum(range), Some(62));
-
     }
 }

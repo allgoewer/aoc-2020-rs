@@ -8,7 +8,7 @@ fn count_anyone(s: &str) -> usize {
     for c in s.bytes() {
         if c >= b'a' && c <= b'z' {
             let pos = c - b'a';
-            counter |= 1<<pos;
+            counter |= 1 << pos;
         }
     }
 

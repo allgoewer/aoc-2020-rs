@@ -61,7 +61,8 @@ fn is_valid2(record: &HashMap<&str, &str>) -> bool {
         if hcl
             .chars()
             .filter(|c| (*c >= '0' && *c <= '9') || (*c >= 'a' && *c <= 'f'))
-            .count() != 6
+            .count()
+            != 6
         {
             return false;
         }
@@ -73,7 +74,8 @@ fn is_valid2(record: &HashMap<&str, &str>) -> bool {
     if ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]
         .iter()
         .filter(|color| *color == ecl)
-        .count() == 0
+        .count()
+        == 0
     {
         return false;
     }
@@ -95,7 +97,9 @@ impl DayTrait for Day {
     }
 
     fn part2(&self, input: &Input) -> String {
-        let count: usize = parse(input).filter(|r| is_valid1(r) && is_valid2(r)).count();
+        let count: usize = parse(input)
+            .filter(|r| is_valid1(r) && is_valid2(r))
+            .count();
         count.to_string()
     }
 }

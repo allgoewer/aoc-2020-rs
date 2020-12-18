@@ -1,7 +1,6 @@
 use super::{Day as DayTrait, Input};
 use std::str::FromStr;
 
-
 #[derive(Clone, Debug, PartialEq, Eq)]
 struct Seat {
     row: usize,
@@ -42,14 +41,9 @@ impl FromStr for Seat {
         let col = if cols[2] as char == 'L' { col.0 } else { col.1 };
         let id = row * 8 + col;
 
-        Ok(Seat {
-            row,
-            col,
-            id,
-        })
+        Ok(Seat { row, col, id })
     }
 }
-
 
 pub struct Day;
 
@@ -57,7 +51,9 @@ impl DayTrait for Day {
     fn part1(&self, input: &Input) -> String {
         let max = parse(input)
             .filter_map(|i| i.parse::<Seat>().ok())
-            .map(|s| s.id).max().unwrap();
+            .map(|s| s.id)
+            .max()
+            .unwrap();
 
         max.to_string()
     }
@@ -79,7 +75,6 @@ impl DayTrait for Day {
             }
         }
 
-
         String::new()
     }
 }
@@ -92,14 +87,35 @@ mod tests {
     fn samples() {
         let s = "BFFFBBFRRR";
         let seat: Seat = s.parse().unwrap();
-        assert_eq!(seat, Seat { row: 70, col: 7, id: 567 });
+        assert_eq!(
+            seat,
+            Seat {
+                row: 70,
+                col: 7,
+                id: 567
+            }
+        );
 
         let s = "FFFBBBFRRR";
         let seat: Seat = s.parse().unwrap();
-        assert_eq!(seat, Seat { row: 14, col: 7, id: 119 });
+        assert_eq!(
+            seat,
+            Seat {
+                row: 14,
+                col: 7,
+                id: 119
+            }
+        );
 
         let s = "BBFFBBFRLL";
         let seat: Seat = s.parse().unwrap();
-        assert_eq!(seat, Seat { row: 102, col: 4, id: 820 });
+        assert_eq!(
+            seat,
+            Seat {
+                row: 102,
+                col: 4,
+                id: 820
+            }
+        );
     }
 }
