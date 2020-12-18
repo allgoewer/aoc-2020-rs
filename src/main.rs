@@ -5,6 +5,7 @@ mod day4;
 mod day5;
 mod day6;
 mod day7;
+mod day8;
 
 #[derive(Clone, Debug)]
 struct Input<'s>(&'s str);
@@ -44,6 +45,7 @@ fn main() {
         (Box::new(day5::Day), Input(include_str!("inputs/5"))),
         (Box::new(day6::Day), Input(include_str!("inputs/6"))),
         (Box::new(day7::Day), Input(include_str!("inputs/7"))),
+        (Box::new(day8::Day), Input(include_str!("inputs/8"))),
     ];
 
     for (mut i, (day, input)) in days.iter().enumerate() {
