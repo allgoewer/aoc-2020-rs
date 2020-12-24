@@ -15,7 +15,7 @@ where
             }
         }
 
-        return Some(window[window_size]);
+        return Some(next);
     }
 
     None
